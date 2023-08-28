@@ -9,11 +9,11 @@ module.exports = {
     ],
     theme: {
         fontFamily: {
-            'sans': ['"Roboto"'],
+            'sans': ['TRIAL Riegla', 'sans-serif'],
             //   'serif': ['ui-serif', 'Georgia'
             'mono': ['"Roboto Mono"', 'monospace'],
             //   'display': ['Oswald']
-            'body': ['"Roboto"']
+            'body': ['TRIAL Riegla', 'sans-serif']
         },
         container: {
             center: true,

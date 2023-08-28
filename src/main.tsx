@@ -4,6 +4,7 @@ import ThemeProvider from './components/ThemeProvider/index.ts';
 import { Provider } from 'react-redux';
 import { store } from './redux/';
 
+import './styles/fonts.css';
 import './styles/globals.css';
 import './styles/scrollbar.css';
 

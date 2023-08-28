@@ -1,5 +1,6 @@
 import { DK } from 'country-flag-icons/react/3x2';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
+import { TypographyMuted } from '../Typography';
 
 const Wallet = () => {
     return (
@@ -16,11 +17,19 @@ const Wallet = () => {
                     </div>
                 </CardTitle>
             </CardHeader>
-            <CardContent>
-                <div className="text-2xl font-bold">$45,231.89</div>
-                <p className="text-sm text-muted-foreground mt-1">
-                    40817810099910004312
-                </p>
+            <CardContent
+                className='space-y-2 mt-2'
+            >
+                <div>
+                    <TypographyMuted className='m-0'>Баланс</TypographyMuted>
+                    <div className="text-2xl font-bold">$45,231.89</div>
+                </div>
+                <div>
+                    <TypographyMuted className='m-0'>Номер счета</TypographyMuted>
+                    <div className="text-sm text-muted-foreground">
+                        40817810099910004312
+                    </div>
+                </div>
             </CardContent>
         </Card>
         // <div
