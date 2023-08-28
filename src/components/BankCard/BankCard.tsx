@@ -14,12 +14,12 @@ interface IBankCardProps {
 }
 
 const BankCard = (props: IBankCardProps) => {
-    const { data, className, infoEnabled = true, ...rest } = props;
+    const { data, className, infoEnabled = true, isControlled = false, ...rest } = props;
 
     return (
         <UnitInfo
             unit={data}
-            enabled={infoEnabled}
+            enabled={infoEnabled && !isControlled}
         >
             <motion.div
                 className={twMerge('relative w-full rounded-sm text-white flex flex-col justify-between p-8 pb-5 px-4 overflow-hidden pt-4 bg-gradient-to-tl', className)}
@@ -29,7 +29,7 @@ const BankCard = (props: IBankCardProps) => {
                 {...rest}
 
                 whileHover={{
-                    scale: infoEnabled ? 1.02 : 1
+                    scale: (infoEnabled || isControlled) ? 1.02 : 1
                 }}
             >
                 <div

@@ -5,6 +5,7 @@ import Home from './pages/Home';
 
 import { Link, Route, Routes } from 'react-router-dom';
 import Transfer from './pages/Transfer';
+import Create from './pages/Create';
 
 function App() {
     return (
@@ -32,6 +33,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/transfer" element={<Transfer />} />
+                        <Route path="/create" element={<Create />} />
                     </Routes>
                 </div>
             </div>

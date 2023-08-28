@@ -18,9 +18,13 @@ export function makeFrom(index: number, total: number, min: number) {
 
 export function valueToString(v: number) {
     return {
-        int: Math.trunc(v).toString().replace(/(?<=[0-9])(?=(?:[0-9]{3})+(?![0-9]))/g, ' '),
+        int: Math.trunc(v).toString().replace(/(?<=[0-9])(?=(?:[0-9]{3})+(?![0-9]))/g, ','),
         float: (v - Math.trunc(v)).toFixed(2).slice(2)
     };
+}
+
+export function parseValue(v: number) {
+    return v.toString().replace('.', ',');
 }
 
 export function getCardIcon(cardId: string) {

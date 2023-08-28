@@ -10,7 +10,7 @@ export const banks: Bank[] = [
     },
     {
         id: 1,
-        color: '#FFDC2D',
+        color: '#eed202',
         name: 'Тинькофф',
         countryCode: 'RU',
         logo: 'https://free-png.ru/wp-content/uploads/2022/04/free-png.ru-131-340x338.png',
