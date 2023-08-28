@@ -1,8 +1,7 @@
-import * as CountryFlags from 'country-flag-icons/react/3x2';
 import { BankCard as BankCardType } from '@/types';
 import React from 'react';
-import { CURRENCY_SYMBOL } from '@/constants';
-import { getCardIcon, valueToString } from '@/lib/utils';
+import CurrencyList from 'currency-list';
+import { getCardIcon, getFlagIcon, valueToString } from '@/lib/utils';
 
 interface IBankCardProps {
     data: BankCardType;
@@ -10,8 +9,6 @@ interface IBankCardProps {
 
 const BankCard = (props: IBankCardProps) => {
     const { data } = props;
-
-    const flagIcon = CountryFlags[data.wallet.bank.countryCode as keyof typeof CountryFlags];
 
     return (
         <div
@@ -24,13 +21,13 @@ const BankCard = (props: IBankCardProps) => {
                 className='flex justify-between z-10'
             >
                 {React.createElement(getCardIcon(data.cardId), { size: 35 })}
-                {flagIcon && React.createElement(flagIcon, { className: 'w-8' })}
+                {React.createElement(getFlagIcon(data.wallet.bank.countryCode), { className: 'w-8' })}
             </div>
             <div
                 className='space-y-2 mt-2 z-20'
             >
                 <p className="text-2xl font-bold tracking-more-wider">
-                    {CURRENCY_SYMBOL[data.wallet.currency] ?? ''} {valueToString(data.value).int}
+                    {CurrencyList.get(data.wallet.currency).symbol ?? ''} {valueToString(data.value).int}
                 </p>
                 <div className="flex justify-between text-sm font-medium font-mono tracking-more-wider">
                     <p className="">

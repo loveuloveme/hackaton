@@ -1,8 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { TypographyMuted } from '../Typography';
-import { Bank, Wallet as WalletType } from '@/types';
+import { Wallet as WalletType } from '@/types';
 import { valueToString } from '@/lib/utils';
-import { CURRENCY_SYMBOL } from '@/constants';
+import CurrencyList from 'currency-list';
 
 interface IWalletProps {
     data: WalletType;
@@ -38,7 +38,7 @@ const Wallet = (props: IWalletProps) => {
                 <div>
                     <TypographyMuted className='m-0'>Баланс</TypographyMuted>
                     <div className="text-2xl font-bold">
-                        {CURRENCY_SYMBOL[data.currency] ?? ''} {stringValue.int}<span className='text-stone-500'>.{stringValue.float}</span>
+                        {CurrencyList.get(data.currency).symbol ?? ''} {stringValue.int}<span className='text-stone-500'>.{stringValue.float}</span>
                     </div>
                 </div>
                 <div>
