@@ -1,20 +1,22 @@
 import CardsComponent from '@/components/CardsComponent';
 import CardsSelection from '@/components/CardsSelection/CardsSelection';
+import Filters from '@/components/Filters';
 import { TypographyH2, TypographyMuted } from '@/components/Typography';
 import Wallet from '@/components/Wallet';
 import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { DK } from 'country-flag-icons/react/3x2';
+import { useAppSelector } from '@/redux';
 import { Plus } from 'lucide-react';
 
 const Home = () => {
+    const { list: wallets } = useAppSelector(state => state.wallet);
+    const { list: banks } = useAppSelector(state => state.bank);
+
     return (
         <>
             <div>
                 <TypographyH2>Банковский счет</TypographyH2>
                 <div
-                    className='py-10 rounded-lg backdrop-blur-md '
+                    className='py-10 pt-5 rounded-lg backdrop-blur-md '
                 >
                     <div className="flex justify-between items-center">
                         <TypographyMuted>Текущий баланс</TypographyMuted>
@@ -32,40 +34,7 @@ const Home = () => {
                 </div>
             </div>
 
-            <div
-                className='grid grid-cols-2 gap-2 my-4'
-            >
-                <div>
-                    <Label>Страна Банка</Label>
-                    <Select>
-                        <SelectTrigger>
-                            <SelectValue placeholder="Любая" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="light">
-                                <div className="flex">
-                                    <DK className='w-5 mr-2' /> Дания
-                                </div>
-                            </SelectItem>
-                            <SelectItem value="dark">Dark</SelectItem>
-                            <SelectItem value="system">System</SelectItem>
-                        </SelectContent>
-                    </Select>
-                </div>
-                <div>
-                    <Label>Банк</Label>
-                    <Select>
-                        <SelectTrigger>
-                            <SelectValue placeholder="Любой" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="light">Бебрабанк</SelectItem>
-                            <SelectItem value="dark">Dark</SelectItem>
-                            <SelectItem value="system">System</SelectItem>
-                        </SelectContent>
-                    </Select>
-                </div>
-            </div>
+            <Filters />
             <div className="grid grid-cols-3 gap-4 mt-6">
                 <div className='col-span-2'>
                     <div
@@ -77,10 +46,11 @@ const Home = () => {
                     <div
                         className='grid grid-cols-2 gap-2'
                     >
+                        {wallets?.map(wallet => <Wallet data={wallet} />)}
+                        
+                        {/* <Wallet />
                         <Wallet />
-                        <Wallet />
-                        <Wallet />
-                        <Wallet />
+                        <Wallet /> */}
                     </div>
                     {/* {showWallets ? null : <TypographyMuted className='mt-3 text-center'>Отображены последние 4 кошелька</TypographyMuted>} */}
                 </div>

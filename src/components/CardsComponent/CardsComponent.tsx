@@ -1,6 +1,7 @@
 import { makeFrom } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import BankCard from '../BankCard';
+import { useAppSelector } from '@/redux';
 
 interface ICardsComponent {
     open?: boolean;
@@ -8,14 +9,15 @@ interface ICardsComponent {
 }
 
 const CardsComponent = (props: ICardsComponent) => {
-    const { open = false, useScale = true } = props;
-
+    const {  open = false, useScale = true } = props;
+    const { list: cards } = useAppSelector(state => state.card);
+    
     return (
         <motion.div
             className='cursor-pointer'
         >
             <div>
-                {['#08A652', '#FFDC2D', '#4b7bec', '#fc5c65'].map((item, i, self) => {
+                {cards!.map((item, i, self) => {
                     const total = self.length;
 
                     return (
@@ -35,7 +37,7 @@ const CardsComponent = (props: ICardsComponent) => {
                                 }
                             }}
                         >
-                            <BankCard color={item} />
+                            <BankCard data={item} />
                         </motion.div>
                     );
                 })}

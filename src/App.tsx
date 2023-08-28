@@ -13,7 +13,7 @@ function App() {
             >
                 <div className="container">
                     <div className="flex items-center justify-between h-[100px]">
-                        <h1 className='text-2xl font-mono font-semibold text-[#FFB30B]'>EX_HAND</h1>
+                        <h1 className='text-2xl font-mono font-semibold'>EX_HAND</h1>
                         <ModeToggle />
                     </div>
                 </div>
