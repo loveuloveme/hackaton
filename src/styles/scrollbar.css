@@ -13,3 +13,12 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #6E6E6E;
 }
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none; 
+    scrollbar-width: none;
+}

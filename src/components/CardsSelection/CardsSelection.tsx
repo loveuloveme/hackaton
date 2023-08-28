@@ -1,6 +1,8 @@
 import { ReactElement } from 'react';
 import { Dialog, DialogContent, DialogTrigger } from '../ui/dialog';
-import CardsComponent from '../CardsComponent';
+import { useAppSelector } from '@/redux';
+import BankCard from '../BankCard';
+import { TypographyH2 } from '../Typography';
 
 interface ICardsSelectionProps {
     children: ReactElement;
@@ -8,6 +10,8 @@ interface ICardsSelectionProps {
 
 const CardsSelection = (props: ICardsSelectionProps) => {
     const { children } = props;
+
+    const { list: cards } = useAppSelector(state => state.card);
 
     return (
         <Dialog>
@@ -17,7 +21,11 @@ const CardsSelection = (props: ICardsSelectionProps) => {
                 {children}
             </DialogTrigger>
             <DialogContent>
-                <CardsComponent open={true} useScale={false} />
+                <TypographyH2>Ваши карты</TypographyH2>
+                <div className="space-y-2">
+                    {cards?.map(card => <BankCard data={card} />)}
+                </div>
+                {/* <CardsComponent open={true} useScale={false} /> */}
             </DialogContent>
         </Dialog>
     );

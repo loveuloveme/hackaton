@@ -2,24 +2,26 @@ import { makeFrom } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import BankCard from '../BankCard';
 import { useAppSelector } from '@/redux';
+import { useState } from 'react';
 
-interface ICardsComponent {
-    open?: boolean;
-    useScale?: boolean;
-}
-
-const CardsComponent = (props: ICardsComponent) => {
-    const {  open = false, useScale = true } = props;
+const CardsStack = () => {
     const { list: cards } = useAppSelector(state => state.card);
-    
+
+    const [isHover, setHover] = useState(false);
+
     return (
         <motion.div
             className='cursor-pointer'
+
+            onHoverStart={() => setHover(true)}
+            onHoverEnd={() => setHover(false)}
         >
             <div>
                 {cards!.map((item, i, self) => {
                     const total = self.length;
 
+
+                    // :_
                     return (
                         <motion.div
                             className='relative'
@@ -27,17 +29,21 @@ const CardsComponent = (props: ICardsComponent) => {
                                 zIndex: total - i
                             }}
                             initial="collapsed"
-                            animate={open ? 'open' : 'collapsed'}
+                            animate={isHover ? 'hover' : 'collapsed'}
                             variants={{
                                 open: { marginTop: i > 0 ? 10 : 0, filter: 'brightness(1)', },
                                 collapsed: {
                                     marginTop: i > 0 ? -100 : 0,
                                     filter: `brightness(${makeFrom(i, total, 0.3)})`,
-                                    scale: useScale ? makeFrom(i, total, 0.95) : 1,
+                                    scale: makeFrom(i, total, 0.95)
+                                },
+                                hover: {
+                                    scale: i == 0 ? 1.02 :1,
+                                    translateY: `${i*20}%`
                                 }
                             }}
                         >
-                            <BankCard data={item} />
+                            <BankCard className='shadow-xl' data={item} infoEnabled={false} />
                         </motion.div>
                     );
                 })}
@@ -46,4 +52,4 @@ const CardsComponent = (props: ICardsComponent) => {
     );
 };
 
-export default CardsComponent;
+export default CardsStack;

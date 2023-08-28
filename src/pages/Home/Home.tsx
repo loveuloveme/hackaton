@@ -1,4 +1,4 @@
-import CardsComponent from '@/components/CardsComponent';
+import CardsComponent from '@/components/CardsStack';
 import CardsSelection from '@/components/CardsSelection/CardsSelection';
 import Filters from '@/components/Filters';
 import { TypographyH2, TypographyMuted } from '@/components/Typography';
@@ -6,6 +6,7 @@ import Wallet from '@/components/Wallet';
 import { Button } from '@/components/ui/button';
 import { useAppSelector } from '@/redux';
 import { Plus } from 'lucide-react';
+import CardsStack from '@/components/CardsStack';
 
 const Home = () => {
     const { list: wallets } = useAppSelector(state => state.wallet);
@@ -33,8 +34,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-
-            <Filters />
+            {/* <Filters /> */}
             <div className="grid grid-cols-3 gap-4 mt-6">
                 <div className='col-span-2'>
                     <div
@@ -47,7 +47,7 @@ const Home = () => {
                         className='grid grid-cols-2 gap-2'
                     >
                         {wallets?.map(wallet => <Wallet data={wallet} />)}
-                        
+
                         {/* <Wallet />
                         <Wallet />
                         <Wallet /> */}
@@ -66,7 +66,7 @@ const Home = () => {
                         {/* <Button variant='ghost'>Выпустить карту</Button> */}
                     </div>
                     <CardsSelection>
-                        <CardsComponent />
+                        <CardsStack />
                     </CardsSelection>
                 </div>
             </div>
