@@ -8,12 +8,16 @@ import './styles/fonts.css';
 import './styles/globals.css';
 import './styles/scrollbar.css';
 
+import { BrowserRouter } from 'react-router-dom';
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
     //<React.StrictMode>
-    <Provider store={store}>
-        <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
-            <App />
-        </ThemeProvider>
-    </Provider>
+    <BrowserRouter>
+        <Provider store={store}>
+            <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+                <App />
+            </ThemeProvider>
+        </Provider>
+    </BrowserRouter>
     //</React.StrictMode>,
 );

@@ -7,6 +7,8 @@ import { Button } from '@/components/ui/button';
 import { useAppSelector } from '@/redux';
 import { Plus } from 'lucide-react';
 import CardsStack from '@/components/CardsStack';
+import { Separator } from '@/components/ui/separator';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     const { list: wallets } = useAppSelector(state => state.wallet);
@@ -33,6 +35,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
+                <Separator />
             </div>
             {/* <Filters /> */}
             <div className="grid grid-cols-3 gap-4 mt-6">
@@ -59,9 +62,13 @@ const Home = () => {
                         className='flex justify-between'
                     >
                         <TypographyH2>Карты</TypographyH2>
-                        <Button className='rounded-full' size="icon">
-                            <Plus />
-                        </Button>
+                        <Link
+                            to='/create'
+                        >
+                            <Button className='rounded-full' size="icon">
+                                <Plus />
+                            </Button>
+                        </Link>
                         {/* <Toggle onPressedChange={setShowCards}>Показать все</Toggle> */}
                         {/* <Button variant='ghost'>Выпустить карту</Button> */}
                     </div>

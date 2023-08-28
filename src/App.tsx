@@ -3,6 +3,9 @@ import { Separator } from './components/ui/separator';
 import SideMenu from './components/SideMenu/SideMenu';
 import Home from './pages/Home';
 
+import { Link, Route, Routes } from 'react-router-dom';
+import Transfer from './pages/Transfer';
+
 function App() {
     return (
         <div
@@ -13,7 +16,11 @@ function App() {
             >
                 <div className="container">
                     <div className="flex items-center justify-between h-[100px]">
-                        <h1 className='text-2xl font-mono font-semibold'>EX_HAND</h1>
+                        <Link
+                            to='/'
+                        >
+                            <h1 className='text-2xl font-mono font-semibold'>EX_HAND</h1>
+                        </Link>
                         <ModeToggle />
                     </div>
                 </div>
@@ -22,7 +29,10 @@ function App() {
             <div className="container">
                 <SideMenu />
                 <div className='pl-[270px] py-10'>
-                    <Home />
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/transfer" element={<Transfer />} />
+                    </Routes>
                 </div>
             </div>
         </div>
