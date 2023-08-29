@@ -31,8 +31,8 @@ const UnitInfo = (props: IUnitInfo) => {
 
     return (
         <Dialog
-            // open={open}
-            // onOpenChange={setOpen}
+        // open={open}
+        // onOpenChange={setOpen}
         >
             <DialogTrigger
                 className='text-left w-full'
@@ -64,19 +64,11 @@ const UnitInfo = (props: IUnitInfo) => {
                             className='space-y-2'
                         >
                             {isCard ?
-                                <div
-                                    onClick={handleInnerClick}
-                                >
-                                    <Wallet data={(unit as BankCardType).wallet} />
-                                </div>
+                                <Wallet data={(unit as BankCardType).wallet} />
                                 :
                                 cards?.filter(card => card.wallet === unit).map(card => {
                                     return (
-                                        <div
-                                            onClick={handleInnerClick}
-                                        >
-                                            <BankCard data={card} />
-                                        </div>
+                                        <BankCard data={card} />
                                     );
                                 })
                             }
