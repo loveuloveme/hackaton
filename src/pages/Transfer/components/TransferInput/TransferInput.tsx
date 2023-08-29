@@ -1,4 +1,5 @@
 import { Input } from '@/components/ui/input';
+import { toFixedNumber } from '@/lib/utils';
 
 interface ITransferInputProps {
     placeholder: string;
@@ -8,7 +9,7 @@ interface ITransferInputProps {
 }
 
 const TransferInput = (props: ITransferInputProps) => {
-    const { placeholder, currency, ...rest } = props;
+    const { placeholder, currency, value, ...rest } = props;
 
     return (
         <div
@@ -22,11 +23,11 @@ const TransferInput = (props: ITransferInputProps) => {
             <Input
                 min="0"
                 max="10"
-                value='0'
+                value={toFixedNumber(value, 2)}
                 type="number"
                 id="email"
                 placeholder={placeholder}
-                className='h-[75px] shadow-none text-3xl font-semibold border-transparent focus:border-transparent focus:ring-0 focus:outline-none !outline-none placeholder:font-normal placeholder:text-xl'
+                className='h-[75px] shadow-none text-3xl font-semibold border-transparent focus:border-transparent focus:ring-0 focus:outline-none !outline-none'
                 {...rest}
             />
         </div>

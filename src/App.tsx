@@ -1,13 +1,13 @@
 import ModeToggle from './components/ModeToggle/';
 import { Separator } from './components/ui/separator';
-import SideMenu from './components/SideMenu/SideMenu';
+import SideMenu, { SideMenuMobile } from './components/SideMenu/SideMenu';
 import Home from './pages/Home';
 
 import { Link, Route, Routes, useLocation } from 'react-router-dom';
 import Transfer from './pages/Transfer';
 import Create from './pages/Create';
 import { useEffect, useRef } from 'react';
-import {  AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import PageTransition from './components/PageTransition';
 
 
@@ -36,14 +36,19 @@ function App() {
                         >
                             <h1 className='text-2xl font-mono font-semibold'>EX_HAND</h1>
                         </Link>
-                        <ModeToggle />
+                        <div className="lg:hidden">
+                            <ModeToggle />
+                        </div>
+                        <div className='hidden lg:block'>
+                            <SideMenuMobile />
+                        </div>
                     </div>
                 </div>
                 <Separator />
             </header>
             <div className="container">
                 <SideMenu />
-                <div className='pl-[270px] py-5'>
+                <div className='pl-[270px] lg:pl-0 py-5'>
                     <AnimatePresence mode='wait'>
                         <Routes location={location} key={location.key}>
                             <Route

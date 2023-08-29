@@ -23,7 +23,7 @@ const Banks = () => {
                 <TypographyH2 className='text-3xl'>Доступные банки</TypographyH2>
                 <Separator />
             </div>
-            <div className="grid grid-cols-3 gap-4 mt-6">
+            <div className="grid grid-cols-3 gap-4 mt-6 lg:grid-cols-2 sm:grid-cols-1">
                 {banks.map(bank => {
                     return (
                         <Link to={'' + bank.intName}>

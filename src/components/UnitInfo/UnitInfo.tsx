@@ -29,12 +29,6 @@ const UnitInfo = (props: IUnitInfo) => {
     if (unit == null) return;
     const isCard = 'cardId' in unit;
 
-    const handleInnerClick = () => {
-        // console.log('close');
-        // setTimeout(() => setOpen(false), 250)
-        // ;
-    };
-
     return (
         <Dialog
             // open={open}

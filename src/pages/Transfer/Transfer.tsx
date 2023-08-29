@@ -20,13 +20,30 @@ const Transfer = () => {
     const [toCard, setToCard] = useState(cards[1]);
     const [currency, setCurrency] = useState(1.1);
 
-    const isAllowed = fromCard !== toCard;
+    const [fromCardValue, setFromCardValue] = useState(0);
+    const [toCardValue, setToCardValue] = useState(0);
+
+    const isAllowed = fromCard !== toCard && fromCardValue <= fromCard.value;
+
+    const handleFromChange = (value: string) => {
+        const v = parseFloat(value);
+
+        setToCardValue(v * currency);
+        setFromCardValue(v);
+    };
+
+    const handleToChange = (value: string) => {
+        const v = parseFloat(value);
+
+        setFromCardValue(v * (1 / currency));
+        setToCardValue(v);
+    };
 
     return (
         <>
             <TypographyH2>Перевод средств</TypographyH2>
-            <div className="grid grid-cols-3 gap-3 mt-5">
-                <div className='col-span-2'>
+            <div className="grid grid-cols-3 gap-3 mt-5 md:grid-cols-1">
+                <div className='col-span-2 md:col-span-1'>
                     <div>
                         <TypographyMuted>Откуда</TypographyMuted>
                         <CardsSelection
@@ -65,37 +82,51 @@ const Transfer = () => {
                     </div>
                 </div>
             </div>
-            <Card
-                className='flex justify-between items-center mt-5'
-            >
-                <CardHeader>
-                    <CardTitle>Текущий курс</CardTitle>
-                    <CardDescription>Актуальный курс на 18:08 28.08.2023</CardDescription>
-                </CardHeader>
-                <CardContent
-                    className='p-6 py-0 text-4xl font-bold space-x-5 flex items-center'
+            <div className="mt-5">
+                <TypographyMuted className='hidden md:block'>Сумма перевода</TypographyMuted>
+                <Card
+                    className='flex justify-between items-center md:flex-col'
                 >
-                    <span>
-                        {CurrencyList.get(fromCard.wallet.currency).symbol ?? ''} 1
-                    </span>
-                    <Separator orientation='vertical' className='h-[50px]' />
-                    <span>
-                        {CurrencyList.get(toCard.wallet.currency).symbol ?? ''} {parseValue(currency)}
-                    </span>
-                </CardContent>
-            </Card>
-
+                    <CardHeader
+                        className='md:hidden'
+                    >
+                        <CardTitle>Текущий курс</CardTitle>
+                        <CardDescription>Актуальный курс на 18:08 28.08.2023</CardDescription>
+                    </CardHeader>
+                    <CardContent
+                        className='p-6 py-0 text-4xl font-bold space-x-5 flex items-center md:py-6'
+                    >
+                        <span>
+                            {CurrencyList.get(fromCard.wallet.currency).symbol ?? ''} 1
+                        </span>
+                        <Separator orientation='vertical' className='h-[50px]' />
+                        <span>
+                            {CurrencyList.get(toCard.wallet.currency).symbol ?? ''} {parseValue(currency)}
+                        </span>
+                    </CardContent>
+                </Card>
+            </div>
 
             <div
-                className="grid grid-cols-3 gap-5 mt-5"
+                className="grid grid-cols-3 gap-5 mt-5 md:grid-cols-2 sm:grid-cols-1"
             >
-                <div className='col-span-2'>
+                <div className='col-span-2 md:col-span-1'>
                     <TypographyMuted>Сумма перевода</TypographyMuted>
-                    <TransferInput placeholder='Сумма перевода' currency={fromCard.wallet.currency} />
+                    <TransferInput
+                        placeholder='0'
+                        currency={fromCard.wallet.currency}
+                        value={fromCardValue}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleFromChange(e.target.value)}
+                    />
                 </div>
                 <div>
                     <TypographyMuted>Сумма получения</TypographyMuted>
-                    <TransferInput placeholder='Сумма получения' currency={toCard.wallet.currency} />
+                    <TransferInput
+                        placeholder='0'
+                        currency={toCard.wallet.currency}
+                        value={toCardValue}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleToChange(e.target.value)}
+                    />
                 </div>
 
             </div>
@@ -105,6 +136,7 @@ const Transfer = () => {
                     disabled={!isAllowed}
                 >
                     <Button
+                        size='lg'
                         className='w-full mt-5'
                         disabled={!isAllowed}
                     >
@@ -122,6 +154,7 @@ const Transfer = () => {
                     <TypographyLead>Указаны суммы, которые будут получены после перевода</TypographyLead>
 
                     <Button
+                        size='lg'
                         className='w-full mt-5'
                     >
                         Подтвердить

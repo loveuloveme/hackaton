@@ -5,6 +5,8 @@ import BankCard from '../BankCard';
 import { TypographyH2 } from '../Typography';
 import { BankCard as BankCardType } from '@/types';
 import { motion } from 'framer-motion';
+import { Button } from '../ui/button';
+import { X } from 'lucide-react';
 
 interface ICardsSelectionProps {
     children: ReactElement;
@@ -31,7 +33,17 @@ const CardsSelection = (props: ICardsSelectionProps) => {
                 {children}
             </DialogTrigger>
             <DialogContent>
-                <TypographyH2>{title ?? 'Ваши карты'}</TypographyH2>
+                <div className="flex justify-between">
+                    <TypographyH2>{title ?? 'Ваши карты'}</TypographyH2>
+                    <Button
+                        size='icon'
+                        onClick={() => {
+                            setOpen(false);
+                        }}
+                    >
+                        <X />
+                    </Button>
+                </div>
                 <div className="space-y-2">
                     {cards?.map((card, i) => {
                         return (
@@ -68,7 +80,7 @@ const CardsSelection = (props: ICardsSelectionProps) => {
                                 <BankCard
                                     data={card}
                                     isControlled={isControlled}
-                                    infoEnabled={false}
+                                    infoEnabled={true}
                                     className='cursor-pointer'
                                 />
                             </motion.div>

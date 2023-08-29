@@ -8,6 +8,17 @@ module.exports = {
         './src/**/*.{ts,tsx}',
     ],
     theme: {
+        screens: {
+            '2xl': {'max': '1400px'},
+
+            'xl': {'max': '1279px'},
+
+            'lg': {'max': '1023px'},
+
+            'md': {'max': '767px'},
+
+            'sm': {'max': '639px'},  
+        },
         fontFamily: {
             'sans': ['TRIAL Riegla', 'sans-serif'],
             //   'serif': ['ui-serif', 'Georgia'
