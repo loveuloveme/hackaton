@@ -6,20 +6,20 @@ import Home from './pages/Home';
 import { Link, Route, Routes, useLocation } from 'react-router-dom';
 import Transfer from './pages/Transfer';
 import Create from './pages/Create';
-import Background from './components/Background';
-import { TypographyLead } from './components/Typography';
 import { useEffect, useRef } from 'react';
+import {  AnimatePresence } from 'framer-motion';
+import PageTransition from './components/PageTransition';
+
 
 function App() {
-
     const containerRef = useRef<HTMLDivElement>(null);
-    const { pathname } = useLocation();
+    const location = useLocation();
 
     useEffect(() => {
-        if(containerRef.current){
+        if (containerRef.current) {
             containerRef.current.scrollTo(0, 0);
         }
-    }, [pathname]);
+    }, [location.pathname]);
 
     return (
         <div
@@ -44,11 +44,17 @@ function App() {
             <div className="container">
                 <SideMenu />
                 <div className='pl-[270px] py-5'>
-                    <Routes>
-                        <Route path='/' element={<Home />} />
-                        <Route path='/transfer' element={<Transfer />} />
-                        <Route path='/create/*' element={<Create />} />
-                    </Routes>
+                    <AnimatePresence mode='wait'>
+                        <Routes location={location} key={location.key}>
+                            <Route
+                                element={<PageTransition />}
+                            >
+                                <Route path='/' element={<Home />} />
+                                <Route path='/transfer' element={<Transfer />} />
+                                <Route path='/create/*' element={<Create />} />
+                            </Route>
+                        </Routes>
+                    </AnimatePresence>
                 </div>
             </div>
             <footer
@@ -59,7 +65,7 @@ function App() {
                 </div>
             </footer>
             {/* <Background /> */}
-        </div>
+        </div >
     );
 }
 

@@ -1,6 +1,4 @@
-import CardsComponent from '@/components/CardsStack';
 import CardsSelection from '@/components/CardsSelection/CardsSelection';
-import Filters from '@/components/Filters';
 import { TypographyH2, TypographyMuted } from '@/components/Typography';
 import Wallet from '@/components/Wallet';
 import { Button } from '@/components/ui/button';
@@ -9,6 +7,7 @@ import { Plus } from 'lucide-react';
 import CardsStack from '@/components/CardsStack';
 import { Separator } from '@/components/ui/separator';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const Home = () => {
     const { list: wallets } = useAppSelector(state => state.wallet);
@@ -18,8 +17,8 @@ const Home = () => {
         <>
             <div>
                 <TypographyH2>Банковский счет</TypographyH2>
-                <div
-                    className='py-10 pt-5 rounded-lg backdrop-blur-md '
+                <motion.div
+                    className='py-10 pt-5 rounded-lg backdrop-blur-md'
                 >
                     <div className="flex justify-between items-center">
                         <TypographyMuted>Текущий баланс</TypographyMuted>
@@ -34,7 +33,7 @@ const Home = () => {
                             <div className='font-mono'>40817810099910004312</div>
                         </div>
                     </div>
-                </div>
+                </motion.div>
                 <Separator />
             </div>
             {/* <Filters /> */}

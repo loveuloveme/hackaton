@@ -4,6 +4,7 @@ import { useAppSelector } from '@/redux';
 import BankCard from '../BankCard';
 import { TypographyH2 } from '../Typography';
 import { BankCard as BankCardType } from '@/types';
+import { motion } from 'framer-motion';
 
 interface ICardsSelectionProps {
     children: ReactElement;
@@ -32,15 +33,37 @@ const CardsSelection = (props: ICardsSelectionProps) => {
             <DialogContent>
                 <TypographyH2>{title ?? 'Ваши карты'}</TypographyH2>
                 <div className="space-y-2">
-                    {cards?.map(card => {
+                    {cards?.map((card, i) => {
                         return (
-                            <div
+                            <motion.div
+                                variants={{
+                                    initial: {
+                                        translateY: `-${50 * i}%`,
+                                        zIndex: 100 - i
+                                    },
+
+                                    open: {
+                                        translateY: 0
+                                    }
+                                }}
+
+                                initial='initial'
+                                animate='open'
+
+                                transition={{
+                                    delay: 0.2,
+                                    duration: 0.5,
+                                    type: 'spring'
+                                }}
+
                                 onClick={() => {
                                     if (isControlled) {
                                         onSelect(card);
                                         setOpen(false);
                                     }
                                 }}
+
+                                className='relative'
                             >
                                 <BankCard
                                     data={card}
@@ -48,7 +71,7 @@ const CardsSelection = (props: ICardsSelectionProps) => {
                                     infoEnabled={false}
                                     className='cursor-pointer'
                                 />
-                            </div>
+                            </motion.div>
                         );
                     })}
                 </div>
