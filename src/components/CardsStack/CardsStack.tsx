@@ -43,7 +43,7 @@ const CardsStack = () => {
                                 }
                             }}
                         >
-                            <BankCard className='shadow-xl' data={item} infoEnabled={false} />
+                            <BankCard className='shadow-2xl' data={item} infoEnabled={false} />
                         </motion.div>
                     );
                 })}

@@ -24,7 +24,7 @@ const Wallet = (props: IWalletProps) => {
             enabled={infoEnabled}
         >
             <Card
-                className={twMerge('rounded-xl transition-colors h-full flex flex-col', className, infoEnabled ? 'hover:bg-stone-100 dark:hover:bg-[#242424]' : '')}
+                className={twMerge('rounded-xl transition-colors h-full flex flex-col dark:bg-[#242424]', className, infoEnabled ? ' hover:bg-stone-100 dark:hover:bg-[#323232]' : '')}
                 {...rest}
             >
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">

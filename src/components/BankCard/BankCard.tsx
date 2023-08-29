@@ -54,10 +54,10 @@ const BankCard = (props: IBankCardProps) => {
                     </div>
                 </div>
                 <div
-                    className='absolute inset-0 py-5 px-2' //bg-gradient-to-t from-black/30 via-transparent to-transparent
+                    className='absolute inset-0 bg-black/10' //bg-gradient-to-t from-black/30 via-transparent to-transparent
                 >
                     <img
-                        className=' filter brightness-0 invert opacity-60 ml-auto w-[50%] h-full object-contain object-right'
+                        className='py-5 px-2 filter brightness-0 invert opacity-60 ml-auto w-[50%] h-full object-contain object-right'
                         src={data.wallet.bank.logo}
                     />
                 </div>

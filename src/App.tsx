@@ -65,8 +65,9 @@ function App() {
             <footer
                 className="bg-[url('./assets/wave.svg')] dark:bg-[url('./assets/wave-dark.svg')] bg-no-repeat bg-top bg-cover mt-auto"
             >
+                
                 <div className="container h-[100px] flex items-center">
-                    <div className='text-md text-center text-stone-500'>Инфляция 2023 г.</div>
+                    <div className='text-md text-center text-stone-700 font-medium uppercase'>Инфляция</div>
                 </div>
             </footer>
             {/* <Background /> */}

@@ -27,7 +27,7 @@ const Banks = () => {
                 {banks.map(bank => {
                     return (
                         <Link to={'' + bank.intName}>
-                            <Card className=' cursor-pointer hover:bg-stone-100/80 dark:hover:bg-white/10'>
+                            <Card className=' cursor-pointer hover:bg-stone-100/80 dark:bg-[#242424] dark:hover:bg-[#323232]'>
                                 <CardContent
                                     className='flex flex-col justify-end p-0 relative h-[200px]'
                                 >
