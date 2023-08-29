@@ -7,6 +7,7 @@ export const banks: Bank[] = [
         name: 'Сбербанк',
         countryCode: 'RU',
         logo: 'https://companieslogo.com/img/orig/SBER.ME-10de1f5f.png?t=1629633978',
+        intName: 'sberbank'
     },
     {
         id: 1,
@@ -14,6 +15,7 @@ export const banks: Bank[] = [
         name: 'Тинькофф',
         countryCode: 'RU',
         logo: 'https://free-png.ru/wp-content/uploads/2022/04/free-png.ru-131-340x338.png',
+        intName: 'tinkoff'
     },
     {
         id: 2,
@@ -21,6 +23,7 @@ export const banks: Bank[] = [
         name: 'Jyske Bank',
         countryCode: 'DK',
         logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Jyske_Bank.svg/797px-Jyske_Bank.svg.png?20210814003028',
+        intName: 'jyskedk'
     },
     {
         id: 3,
@@ -28,6 +31,7 @@ export const banks: Bank[] = [
         name: 'Bank of America',
         countryCode: 'US',
         logo: 'https://companieslogo.com/img/orig/BAC-e7995069.png?t=1633208020',
+        intName: 'bankofamerica'
     }
 ];
 

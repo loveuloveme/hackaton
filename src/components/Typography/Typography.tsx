@@ -9,7 +9,7 @@ export const TypographyH2 = (props: any) => {
 
 export function TypographyLead(props: any) {
     return (
-        <p className="text-xl text-muted-foreground">
+        <p className={twMerge('text-xl text-muted-foreground', props.className)}>
             {props.children}
         </p>
     );

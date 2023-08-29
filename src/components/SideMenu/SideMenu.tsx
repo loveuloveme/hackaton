@@ -17,7 +17,7 @@ const SideMenuButton = (props: ISideMenuButtonProps) => {
             <NavLink
                 to={to}
                 className={({ isActive }) => twMerge(
-                    'transition-all flex items-center py-3 px-4 text-gray-500 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-100 dark:hover:text-black group',
+                    'transition-all flex items-center py-3 px-4 text-gray-500 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-100 dark:hover:text-black group select-none',
                     isActive && 'bg-gray-100 !text-black'
                 )}
             >

@@ -3,17 +3,31 @@ import { Separator } from './components/ui/separator';
 import SideMenu from './components/SideMenu/SideMenu';
 import Home from './pages/Home';
 
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes, useLocation } from 'react-router-dom';
 import Transfer from './pages/Transfer';
 import Create from './pages/Create';
+import Background from './components/Background';
+import { TypographyLead } from './components/Typography';
+import { useEffect, useRef } from 'react';
 
 function App() {
+
+    const containerRef = useRef<HTMLDivElement>(null);
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        if(containerRef.current){
+            containerRef.current.scrollTo(0, 0);
+        }
+    }, [pathname]);
+
     return (
         <div
-            className="h-screen relative overflow-y-auto bg-repeat-x bg-bottom bg-[url('./wave.svg')] dark:bg-[url('./wave-dark.svg')]"
+            className="h-screen relative overflow-y-auto flex flex-col"
+            ref={containerRef}
         >
             <header
-                className='z-10 sticky top-0 backdrop-blur-md bg-white/30 dark:bg-black/30'
+                className='z-50 sticky top-0 backdrop-blur-md bg-white/30 dark:bg-black/30'
             >
                 <div className="container">
                     <div className="flex items-center justify-between h-[100px]">
@@ -29,14 +43,22 @@ function App() {
             </header>
             <div className="container">
                 <SideMenu />
-                <div className='pl-[270px] py-10'>
+                <div className='pl-[270px] py-5'>
                     <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/transfer" element={<Transfer />} />
-                        <Route path="/create" element={<Create />} />
+                        <Route path='/' element={<Home />} />
+                        <Route path='/transfer' element={<Transfer />} />
+                        <Route path='/create/*' element={<Create />} />
                     </Routes>
                 </div>
             </div>
+            <footer
+                className="bg-[url('./assets/wave.svg')] dark:bg-[url('./assets/wave-dark.svg')] bg-no-repeat bg-top bg-cover mt-auto"
+            >
+                <div className="container h-[100px] flex items-center">
+                    <div className='text-md text-center text-stone-500'>Инфляция 2023 г.</div>
+                </div>
+            </footer>
+            {/* <Background /> */}
         </div>
     );
 }

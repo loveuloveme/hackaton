@@ -4,6 +4,7 @@ export type Bank = {
     name: string;
     countryCode: string;
     logo: string;
+    intName: string;
 };
 
 
