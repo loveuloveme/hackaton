@@ -9,9 +9,12 @@ import Create from './pages/Create';
 import { useEffect, useRef } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import PageTransition from './components/PageTransition';
+import { useGetCardsQuery } from './redux/api/user.api';
 
 
 function App() {
+    useGetCardsQuery(null);
+    
     const containerRef = useRef<HTMLDivElement>(null);
     const location = useLocation();
 

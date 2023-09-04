@@ -19,10 +19,12 @@ export const cardSlice = createSlice({
     initialState,
     name: 'card',
     reducers: {
-
+        setCards: (state, action: PayloadAction<BankCard[]>) => {
+            state.list = action.payload;
+        },
     }
 });
 
 export default cardSlice.reducer;
 
-//export const { logout, setUser, setSubs } = bankSlice.actions;
+export const { setCards } = cardSlice.actions;

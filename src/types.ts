@@ -1,3 +1,15 @@
+export type User = {
+    // email: string;
+    token: string;
+};
+
+export type Tariff = {
+    name: string;
+    description: string;
+    provider: string;
+    currency: string;
+};
+
 export type Bank = {
     id: number;
     color: string;
@@ -6,7 +18,6 @@ export type Bank = {
     logo: string;
     intName: string;
 };
-
 
 export type Wallet = {
     id: number;
@@ -21,4 +32,5 @@ export type BankCard = {
     value: number;
     cardId: string;
     wallet: Wallet;
+    tariff: Tariff;
 };

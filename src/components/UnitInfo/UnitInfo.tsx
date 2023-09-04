@@ -68,7 +68,7 @@ const UnitInfo = (props: IUnitInfo) => {
                                 :
                                 cards?.filter(card => card.wallet === unit).map(card => {
                                     return (
-                                        <BankCard data={card} />
+                                        <BankCard key={card.cardId} data={card} />
                                     );
                                 })
                             }

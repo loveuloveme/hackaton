@@ -25,9 +25,11 @@ const Cards = () => {
                 <Separator />
             </div>
             <div className="grid grid-cols-1 gap-4 mt-6">
-                {cards.map((bank, i) => {
+                {cards.map((card, i) => {
                     return (
-                        <Card>
+                        <Card
+                            key={card.cardId}
+                        >
                             <CardContent
                                 className='flex justify-between items-center p-0 py-2 px-2 pl-6'
                             >
@@ -51,9 +53,9 @@ const Cards = () => {
                                 <div className="w-[400px]">
                                     <BankCard
                                         data={{
-                                            ...bank,
+                                            ...card,
                                             value: 0,
-                                            cardId: bank.cardId.slice(0, 4) + 'xxxxxxxxxxxxxxx'
+                                            cardId: card.cardId.slice(0, 4) + 'xxxxxxxxxxxxxxx'
                                         }}
                                         infoEnabled={false}
                                     />

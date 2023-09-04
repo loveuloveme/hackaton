@@ -26,7 +26,7 @@ const Banks = () => {
             <div className="grid grid-cols-3 gap-4 mt-6 lg:grid-cols-2 sm:grid-cols-1">
                 {banks.map(bank => {
                     return (
-                        <Link to={'' + bank.intName}>
+                        <Link to={'' + bank.intName} key={bank.id}>
                             <Card className=' cursor-pointer hover:bg-stone-100/80 dark:bg-[#242424] dark:hover:bg-[#323232]'>
                                 <CardContent
                                     className='flex flex-col justify-end p-0 relative h-[200px]'

@@ -1,12 +1,11 @@
 import { makeFrom } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import BankCard from '../BankCard';
-import { useAppSelector } from '@/redux';
 import { useState } from 'react';
+import { BankCard as BankCardType } from '@/types';
 
-const CardsStack = () => {
-    const { list: cards } = useAppSelector(state => state.card);
-
+const CardsStack = (props: { cards: BankCardType[] }) => {
+    const { cards } = props;
     const [isHover, setHover] = useState(false);
 
     return (
@@ -17,13 +16,14 @@ const CardsStack = () => {
             onHoverEnd={() => setHover(false)}
         >
             <div>
-                {cards!.map((item, i, self) => {
+                {cards.map((card, i, self) => {
                     const total = self.length;
 
 
                     // :_
                     return (
                         <motion.div
+                            key={card.cardId}
                             className='relative'
                             style={{
                                 zIndex: total - i
@@ -38,12 +38,12 @@ const CardsStack = () => {
                                     scale: makeFrom(i, total, 0.95)
                                 },
                                 hover: {
-                                    scale: i == 0 ? 1.02 :1,
-                                    translateY: `${i*20}%`
+                                    scale: i == 0 ? 1.02 : 1,
+                                    translateY: `${i * 20}%`
                                 }
                             }}
                         >
-                            <BankCard className='shadow-2xl' data={item} infoEnabled={false} />
+                            <BankCard className='shadow-2xl' data={card} infoEnabled={false} />
                         </motion.div>
                     );
                 })}

@@ -48,6 +48,7 @@ const CardsSelection = (props: ICardsSelectionProps) => {
                     {cards?.map((card, i) => {
                         return (
                             <motion.div
+                                key={card.cardId}
                                 variants={{
                                     initial: {
                                         translateY: `-${50 * i}%`,

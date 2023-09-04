@@ -11,8 +11,8 @@ import { motion } from 'framer-motion';
 
 const Home = () => {
     const { list: wallets } = useAppSelector(state => state.wallet);
-    const { list: banks } = useAppSelector(state => state.bank);
-
+    const { list: cards } = useAppSelector(state => state.card);
+    
     return (
         <>
             <div>
@@ -46,7 +46,7 @@ const Home = () => {
                     <div
                         className='grid grid-cols-2 gap-2 md:grid-cols-1'
                     >
-                        {wallets?.map(wallet => <Wallet data={wallet} />)}
+                        {wallets?.map(wallet => <Wallet key={wallet.id} data={wallet} />)}
                     </div>
                 </div>
                 <div>
@@ -63,7 +63,7 @@ const Home = () => {
                         </Link>
                     </div>
                     <CardsSelection>
-                        <CardsStack />
+                        <CardsStack cards={cards} />
                     </CardsSelection>
                 </div>
             </div>

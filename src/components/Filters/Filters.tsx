@@ -21,7 +21,7 @@ const Filters = () => {
                         <SelectItem value="any">Любая</SelectItem>
                         {[...new Set(banks!.map(bank => bank.countryCode))].map(countryCode => {
                             return (
-                                <SelectItem value={countryCode}>
+                                <SelectItem value={countryCode} key={countryCode}>
                                     <div className="flex">
                                         {React.createElement(getFlagIcon(countryCode), { className: 'w-5 mr-2' })} {getCountryName(countryCode)}
                                     </div>

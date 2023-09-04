@@ -22,7 +22,7 @@ const BankCard = (props: IBankCardProps) => {
             enabled={infoEnabled && !isControlled}
         >
             <motion.div
-                className={twMerge('relative w-full rounded-sm text-white flex flex-col justify-between p-8 pb-5 px-4 overflow-hidden pt-4 bg-gradient-to-tl', className)}
+                className={twMerge('relative w-full rounded-sm text-white flex flex-col justify-between p-8 pb-5 px-4 overflow-hidden pt-4 bg-gradient-to-tl h-[130px]', className)}
                 style={{
                     background: data.wallet.bank.color
                 }}
@@ -36,19 +36,19 @@ const BankCard = (props: IBankCardProps) => {
                     className='flex justify-between z-10'
                 >
                     {React.createElement(getCardIcon(data.cardId), { size: 35 })}
-                    {React.createElement(getFlagIcon(data.wallet.bank.countryCode), { className: 'w-8' })}
+                    {/*{React.createElement(getFlagIcon(data.wallet.bank.countryCode), { className: 'w-8' })} */}
                 </div>
                 <div
                     className='space-y-2 mt-2 z-20'
                 >
                     <p className="text-2xl font-bold tracking-more-wider">
-                        {CurrencyList.get(data.wallet.currency).symbol ?? ''} {valueToString(data.value).int}
+                        {/* {CurrencyList.get(data.wallet.currency).symbol ?? ''} {valueToString(data.value).int} */}
                     </p>
-                    <div className="flex justify-between text-sm font-medium font-mono tracking-more-wider">
-                        <p className="">
+                    <div className="flex justify-between text-sm font-medium font-mono tracking-more-wider line-clamp-1">
+                        <p className="mr-5 line-clamp-1">
                             {data.cardId}
                         </p>
-                        <p className="uppercase font-bold">
+                        <p className="uppercase font-bold line-clamp-1">
                             {data.wallet.bank.name}
                         </p>
                     </div>
